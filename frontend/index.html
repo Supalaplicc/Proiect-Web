@@ -8,15 +8,13 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
         <header class="header">
             <h1>USA Accidents Data Visualization</h1>
             <p>Comprehensive analysis and visualization of traffic accidents across the United States</p>
         </header>
 
-        <!-- Search Form -->
         <section class="search-panel">
-            <h2>Search Accidents</h2>
+            <h2>Multi-Criteria Search</h2>
             <form id="searchForm">
                 <div class="form-group">
                     <label for="startDate">Start Date</label>
@@ -36,16 +34,104 @@
                         <option value="TX">Texas</option>
                         <option value="FL">Florida</option>
                         <option value="NY">New York</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="IL">Illinois</option>
+                        <option value="OH">Ohio</option>
                     </select>
                 </div>
                 
-                <button type="submit">Search</button>
+                <div class="form-group">
+                    <label for="severity">Severity Level</label>
+                    <select id="severity" name="severity">
+                        <option value="">All Severities</option>
+                        <option value="1">Level 1 (Minor)</option>
+                        <option value="2">Level 2 (Moderate)</option>
+                        <option value="3">Level 3 (Serious)</option>
+                        <option value="4">Level 4 (Severe)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weather">Weather Condition</label>
+                    <select id="weather" name="weather">
+                        <option value="">All Weather</option>
+                        <option value="Clear">Clear</option>
+                        <option value="Rain">Rain</option>
+                        <option value="Snow">Snow</option>
+                        <option value="Fog">Fog</option>
+                        <option value="Cloudy">Cloudy</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Search Accidents</button>
             </form>
         </section>
 
-        <!-- Results Section -->
+        <section class="stats-panel">
+            <h2>Statistics Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalAccidents">-</div>
+                    <div class="stat-label">Total Accidents</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgSeverity">-</div>
+                    <div class="stat-label">Average Severity</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="mostAffectedState">-</div>
+                    <div class="stat-label">Most Affected State</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="peakHour">-</div>
+                    <div class="stat-label">Peak Hour</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="visualization-panel">
+            <h2>Data Visualizations</h2>
+            
+            <div class="viz-controls">
+                <button type="button" onclick="showChart('timeline')">Timeline Chart</button>
+                <button type="button" onclick="showChart('severity')">Severity Distribution</button>
+                <button type="button" onclick="showChart('weather')">Weather Impact</button>
+                <button type="button" onclick="showChart('state')">State Analysis</button>
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-box" id="chart1">
+                    <p>Select a visualization type to display charts</p>
+                </div>
+                <div class="chart-box" id="chart2">
+                    <p>Additional charts will appear here</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-panel">
+            <h2>Geographic Distribution</h2>
+            <div id="map-container">
+                <p>Interactive map will be loaded here</p>
+            </div>
+        </section>
+
+        <section class="export-panel">
+            <h2>Export Data</h2>
+            <div class="export-controls">
+                <button type="button" onclick="exportData('csv')">Export CSV</button>
+                <button type="button" onclick="exportData('json')">Export JSON</button>
+                <button type="button" onclick="exportData('svg')">Export SVG</button>
+                <button type="button" onclick="exportData('webp')">Export WebP</button>
+            </div>
+        </section>
+
+        <div id="loading" style="display: none;">
+            <p>Loading data...</p>
+        </div>
+
         <section class="results-panel">
-            <h2>Results</h2>
+            <h2>Search Results</h2>
             <div id="results">
                 <p>No data loaded yet. Use the search form above to find accidents.</p>
             </div>
